@@ -28,10 +28,9 @@ public class ArticleHandler {
 
         public Mono<ServerResponse> getArticles(ServerRequest serverRequest) {
             return ServerResponse.ok().contentType(MediaType.TEXT_EVENT_STREAM)
-                    .body(articleService.getArticles(), ArticleResponse.class);
+                    .body(articleService.getArticles(), Article.class);
 
         }
-
 
         public Mono<ServerResponse> getArticle(ServerRequest serverRequest) {
 

@@ -2,13 +2,12 @@ package com.greenstreetdigital.blog.article;
 
 
 import org.jeasy.random.EasyRandom;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import reactor.test.StepVerifier;
 
-import java.time.LocalDateTime;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @SpringBootTest
@@ -17,27 +16,13 @@ public class ArticleServiceTest {
     @Autowired
     private ArticleService articleService;
 
-    @BeforeEach
-    public void before() {
-        articleService.saveArticle(new Article(
-                "id",
-                "Description",
-                "Title",
-                "Body",
-                "slug",
-                LocalDateTime.now(),
-                LocalDateTime.now(),
-                true,
-                "id",
-                null
-        ));
-    }
-
-
     @Test
     public void testGetArticle() {
+        Article article = new EasyRandom().nextObject(Article.class);
+        articleService.saveArticle(article).block();
         StepVerifier.create(articleService.getArticles())
-            .expectNextCount(1).verifyComplete();
+                .consumeNextWith(System.out::println)
+                .verifyComplete();
     }
 
     @Test
