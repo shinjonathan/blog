@@ -8,4 +8,8 @@ public class ArticleResponse {
     String shortDescription;
     String articleText;
     String userId;
+
+    public static ArticleResponse fromArticle(Article article) {
+        return new ArticleResponse(article.getId(), article.getShortDescription(), article.getBody(), article.getUserId());
+    }
 }

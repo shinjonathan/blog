@@ -4,6 +4,7 @@ import lombok.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
 import java.util.Map;
 
 @Value
@@ -15,6 +16,10 @@ public class Article {
     String shortDescription;
     String title;
     String body;
+    String slug;
+    LocalDateTime createTime;
+    LocalDateTime updateTime;
+    boolean published;
     String userId;
 
     Map<?, ?> metaData;
