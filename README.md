@@ -7,6 +7,14 @@ This will provide a full stack deployable blogging engine that allows for deeper
 
 TODO: Loading the docker-compose. How to run this application locally.
 
+## Primer on Project Reactor, WebFlux and MongoDB
+
+TODO
+
+## Starts with testing
+
+TODO
+
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
