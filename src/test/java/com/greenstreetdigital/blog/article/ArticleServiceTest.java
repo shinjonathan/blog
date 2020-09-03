@@ -6,8 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.event.annotation.BeforeTestClass;
-import org.springframework.test.context.jdbc.Sql;
 import reactor.test.StepVerifier;
 
 import java.time.LocalDateTime;
@@ -18,7 +16,6 @@ public class ArticleServiceTest {
 
     @Autowired
     private ArticleService articleService;
-    @Sql
 
     @BeforeEach
     public void before() {

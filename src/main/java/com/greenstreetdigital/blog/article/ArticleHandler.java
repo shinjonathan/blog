@@ -1,7 +1,6 @@
 package com.greenstreetdigital.blog.article;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -12,7 +11,7 @@ import reactor.core.publisher.Mono;
 import static org.springframework.web.reactive.function.BodyInserters.fromValue;
 
 @Configuration
-public class ArticleController {
+public class ArticleHandler {
 
     @Bean
     RouterFunction<?> routes(RequestHandler requestHandler) {
