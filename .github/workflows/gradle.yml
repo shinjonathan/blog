@@ -22,7 +22,6 @@ jobs:
       run: chmod +x gradlew
     - name: Attempt Build
       run: ./gradlew clean build
-      steps:
     - name: Test & publish code coverage
       uses: paambaati/codeclimate-action@v2.6.0
       env:
