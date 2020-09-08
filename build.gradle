@@ -3,6 +3,7 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'org.asciidoctor.convert' version '1.5.8'
     id 'java'
+    id 'jacoco'
 }
 
 group = 'com.greenstreetdigital'
@@ -43,6 +44,13 @@ dependencies {
 test {
     outputs.dir snippetsDir
     useJUnitPlatform()
+    finalizedBy jacocoTestReport // report is always generated after tests run
+
+}
+
+jacocoTestReport {
+    reports.xml.enabled true
+    dependsOn test // tests are required to run before generating the report
 }
 
 asciidoctor {
