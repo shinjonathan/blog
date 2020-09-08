@@ -24,4 +24,3 @@ jobs:
       run: chmod +x gradlew
     - name: Run Tests
       run: ./gradlew clean test
-    - name: Submit Test Coverage to Code Climate
