@@ -1,4 +1,4 @@
-# Pencil -- Taking Suggestions for Names
+# Firehose
 [![Maintainability](https://api.codeclimate.com/v1/badges/59427da032d36c330462/maintainability)](https://codeclimate.com/github/shinjonathan/blog/maintainability)
 <a href="https://codeclimate.com/github/shinjonathan/blog/test_coverage"><img src="https://api.codeclimate.com/v1/badges/59427da032d36c330462/test_coverage" /></a>
 
