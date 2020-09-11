@@ -32,10 +32,11 @@ public class ArticleHandler {
 
         }
 
+
         public Mono<ServerResponse> getArticle(ServerRequest serverRequest) {
 
             return ServerResponse.ok().contentType(MediaType.TEXT_EVENT_STREAM)
-                    .body(fromValue(serverRequest.pathVariable("id")));
+                    .body(articleService.getArticle(serverRequest.pathVariable("id")), Article.class);
         }
 
     }

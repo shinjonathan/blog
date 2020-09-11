@@ -13,14 +13,18 @@ public class Article {
 
     @Id
     String id;
-    String shortDescription;
+
     String title;
+    String previewText;
+
     String body;
     String slug;
+    String userId;
+
     LocalDateTime createTime;
     LocalDateTime updateTime;
+    LocalDateTime publishDate;
     boolean published;
-    String userId;
 
     Map<?, ?> metaData;
 }
