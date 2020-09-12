@@ -67,32 +67,6 @@ class ArticleHandlerTest {
                                 responseBody()));
     }
 
-
-    public Snippet[] getArticleResponseFields() {
-        return new Snippet[] {
-                responseFields(fieldWithPath("id")
-                        .description("Unique ID for blog article")),
-                responseFields(fieldWithPath("title")
-                        .description("Title of article\n300 character limit")),
-                responseFields(fieldWithPath("previewText")
-                        .description("Short text to display\nSupports markdown")),
-                responseFields(fieldWithPath("slug")
-                        .description("A single word to be used to locate an article in lieu of an id")),
-                responseFields(fieldWithPath("createTime")
-                        .description("Date when article was first created\nTime served in UTC in yyyy-MM-dd HH:mm:ss")),
-                responseFields(fieldWithPath("updateTime")
-                        .description("Date when article was last updated\nTime served in UTC in yyyy-MM-dd HH:mm:ss\"")),
-                responseFields(fieldWithPath("publishTime")
-                        .description("Date when the article has been published\nTime served in UTC in yyyy-MM-dd HH:mm:ss")),
-                responseFields(fieldWithPath("published")
-                        .description("Denotes if the article has been published.")),
-                responseFields(fieldWithPath("metaData")
-                        .description("Any additional fields not tracked by this API"))
-        };
-    }
-
-
-
     public Article getArticleSample() {
         return new Article(
                 "id",
