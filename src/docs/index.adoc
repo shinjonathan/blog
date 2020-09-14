@@ -1,0 +1,3 @@
+### [GET] /article
+
+operation::article[snippets='curl-request,http-request,http-response']
