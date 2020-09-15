@@ -7,8 +7,13 @@ This will provide a full stack deployable blogging engine that allows for deeper
 
 ## Getting Started
 
-TODO: Loading the docker-compose. How to run this application locally.
+You can run this application locally simply by running
 
+```
+docker-compose up
+```
+
+You may 
 ## Primer on Project Reactor, WebFlux and MongoDB
 
 TODO
