@@ -1,6 +1,6 @@
 # Firehose
-[![Maintainability](https://api.codeclimate.com/v1/badges/59427da032d36c330462/maintainability)](https://codeclimate.com/github/shinjonathan/blog/maintainability)
-<a href="https://codeclimate.com/github/shinjonathan/blog/test_coverage"><img src="https://api.codeclimate.com/v1/badges/59427da032d36c330462/test_coverage" /></a>
+[![Maintainability](https://api.codeclimate.com/v1/badges/41d1acaeee11bf356a9e/maintainability)](https://codeclimate.com/github/shinjonathan/firehose/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/41d1acaeee11bf356a9e/test_coverage)](https://codeclimate.com/github/shinjonathan/firehose/test_coverage)
 
 For lack of a better name, pencil is a blogging engine that is written in Java, Spring and React.
 This will provide a full stack deployable blogging engine that allows for deeper customizations.
