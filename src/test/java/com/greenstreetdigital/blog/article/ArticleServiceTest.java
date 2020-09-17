@@ -17,16 +17,15 @@ public class ArticleServiceTest {
     @Test
     public void testGetArticle() {
         Article article = new EasyRandom().nextObject(Article.class);
-        articleService.saveArticle(article).block();
-        StepVerifier.create(articleService.getArticles())
-                .consumeNextWith(System.out::println)
+        articleService.save(article).block();
+        StepVerifier.create(articleService.getAll())
                 .verifyComplete();
     }
 
     @Test
     public void testAddArticle() {
         Article article = new EasyRandom().nextObject(Article.class);
-        StepVerifier.create(articleService.saveArticle(article))
+        StepVerifier.create(articleService.save(article))
                 .expectNextCount(1)
                 .verifyComplete();
     }

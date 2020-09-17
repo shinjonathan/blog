@@ -11,14 +11,14 @@ public class ArticleService {
 
     private final ArticleRepository articleRepository;
 
-    public Flux<Article> getArticles() {
+    public Flux<Article> getAll() {
         return articleRepository.findAll();
     }
-    public Mono<Article> getArticle(String articleId) {
+    public Mono<Article> get(String articleId) {
         return articleRepository.findById(articleId);
     }
 
-    public Mono<Article> saveArticle(Article article) {
+    public Mono<Article> save(Article article) {
         return articleRepository.save(article);
     }
 }
