@@ -19,6 +19,7 @@ public class ArticleServiceTest {
         Article article = new EasyRandom().nextObject(Article.class);
         articleService.save(article).block();
         StepVerifier.create(articleService.getAll())
+                .expectNextCount(1)
                 .verifyComplete();
     }
 
