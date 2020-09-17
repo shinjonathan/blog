@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.restdocs.AutoConfigureRestDocs;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.restdocs.JUnitRestDocumentation;
 import org.springframework.restdocs.operation.preprocess.Preprocessors;
-import org.springframework.restdocs.payload.JsonFieldType;
-import org.springframework.restdocs.snippet.Snippet;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import reactor.core.publisher.Flux;
@@ -19,9 +16,12 @@ import java.time.LocalDateTime;
 import java.util.Collections;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-import static org.springframework.restdocs.payload.PayloadDocumentation.*;
+import static org.springframework.restdocs.payload.PayloadDocumentation.responseBody;
 import static org.springframework.restdocs.webtestclient.WebTestClientRestDocumentation.document;
+import static org.springframework.web.reactive.function.BodyInserters.fromValue;
 
 @WebFluxTest
 @AutoConfigureRestDocs
@@ -35,8 +35,8 @@ class ArticleHandlerTest {
     private WebTestClient webClient;
 
     @Test
-    void testGetArticles() {
-        when(articleService.getArticles())
+    void testGetAllArticles() {
+        when(articleService.getAll())
                 .thenReturn(Flux
                         .just(new EasyRandom().nextObject(Article.class))
                 );
@@ -45,26 +45,42 @@ class ArticleHandlerTest {
                 .uri("/articles")
                 .exchange()
                 .expectStatus().isOk().expectBody().consumeWith(
-                        document("articles",
+                        document("getArticles",
                                 Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
-                                responseBody()
-        ));
+                                responseBody())
+        );
     }
 
     @Test
-    void testGetArticle() {
-        when(articleService.getArticle(any()))
-                .thenReturn(Mono
-                        .just(getArticleSample())
-                );
+    void testGetSingleArticle() {
+        when(articleService.get(any()))
+                .thenReturn(Mono.just(getArticleSample()));
 
         webClient.get()
                 .uri("/articles/{id}", "article-id")
                 .exchange()
                 .expectStatus().isOk().expectBody().consumeWith(
-                        document("article",
+                        document("getArticle",
                                 Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
-                                responseBody()));
+                                responseBody())
+        );
+    }
+
+    @Test
+    void testSaveArticle() {
+        given(articleService.save(any()))
+                .willReturn(Mono.just(getArticleSample()));
+
+        webClient.post()
+                .uri("/articles")
+                .body(fromValue(getArticleSample()))
+                .exchange()
+                .expectStatus().isCreated().expectBody().consumeWith(document("postArticle",
+                Preprocessors.preprocessResponse(Preprocessors.prettyPrint()),
+                responseBody())
+        );
+
+        verify(articleService).save(any());
     }
 
     public Article getArticleSample() {

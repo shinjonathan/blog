@@ -1,3 +1,8 @@
-### [GET] /article
+### [GET] /articles
+operation::getArticle[snippets='curl-request,http-request,http-response']
 
-operation::article[snippets='curl-request,http-request,http-response']
+### [GET] /articles/{id}
+operation::getArticles[snippets='curl-request,http-request,http-response']
+
+### [POST] /articles
+operation::postArticle[snippets='curl-request,http-request,http-response']
